@@ -3,13 +3,6 @@
 version = 3
 
 [[package]]
-name = "Honors"
-version = "0.1.0"
-dependencies = [
- "docx-rs",
-]
-
-[[package]]
 name = "adler"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -173,6 +166,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ee512640fe35acbfb4bb779db6f0d80704c2cacfa2e39b601ef3e3f47d1ae4c7"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "honors"
+version = "0.1.0"
+dependencies = [
+ "docx-rs",
 ]
 
 [[package]]
