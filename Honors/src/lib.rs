@@ -1,1 +1,1 @@
-use docx_rs::{Document, Result};
+use docx_rs::*;
