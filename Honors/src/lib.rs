@@ -1,14 +1,15 @@
 use docx_rs::*;
 use rand::{Rng, thread_rng};
-use std::io;
+use std::{io, path};
 use aes_gcm::{Aes256Gcm, Key, Nonce}; // Or use Aes128Gcm
 use aes_gcm::aead::{Aead, NewAead};
 use base64::{encode, decode};
 use rsa::{PublicKey, RsaPrivateKey, RsaPublicKey, PaddingScheme};
 use rand::rngs::OsRng;
 
-use docx::document::Paragraph;
-use docx::DocxFile;
+use docx_rust::Docx;
+use docx_rust::document::Paragraph;
+use docx_rust::DocxFile;
 
 fn encrypt_symmetric(input: String, key: &[u8; 32]) -> String {
     let cipher = Aes256Gcm::new(Key::from_slice(key));
@@ -80,10 +81,14 @@ fn encrypt_asymmetric(input: String, public_key: &RsaPublicKey) -> String {
 }
 
 pub fn decrypt_docx(encryption_method: u8, password: String, private_key: &RsaPrivateKey) -> Result<(), DocxError> {
-    let path = std::path::Path::new("./output.docx");
+    // let path = std::path::Path::new("./output.docx");
 
-    let docx = DocxFile::from_file(&path).unwrap();
+    // let docx = DocxFile::from_file(&path).unwrap();
+    // let mut docx = docx.parse().unwrap();
+
+    let docx = DocxFile::from_file("example.docx").unwrap();
     let mut docx = docx.parse().unwrap();
+    let text = docx.document.body.text();
 
     let key: [u8; 32] = *b"an example very very secret key.";
     // Read the encrypted text from the docx file

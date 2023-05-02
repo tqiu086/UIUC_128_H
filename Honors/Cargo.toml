@@ -7,8 +7,8 @@ edition = "2021"
 
 [dependencies]
 docx-rs = "0.2"
-docx = "1.1.2"
 rand = "0.8"
 aes-gcm = "0.9"
 base64 = "0.13"
 rsa = "0.5"
+docx-rust = "0.1.5"
